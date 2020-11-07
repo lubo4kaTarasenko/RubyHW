@@ -1,48 +1,65 @@
-class Pet
-  def initialize(type, name)
-    @type = type
+class Pet 
+  attr_accessor :name
+  def initialize(name)
     @name = name
     @feed_level = 3
     @water_level = 3
     @energy_level = 3
     @lifes = 3
-    @mood = 3
+    @mood = 'happy'
     @need_toilet = false
   end
 
-  def get_feed
+  def feed
     if(@feed_level < 3)
       @feed_level = 3
       puts 'omnomnom. thank u, dude'.yellow
+      @mood = 'happy'
     else
       puts 'feeeeeee. not hungry.'.pink
     end
+    check
   end
   
-  def get_water
+  def water
     if(@water_level < 3)
       @water_level = 3
       puts 'bul-bul-hlyup-hlyup. thank u, dude'.yellow
+      @mood = 'happy'
     else
       puts 'feeeeeee. not thirsty.'.pink
     end
+    check
   end
 
-  def get_sleep
+  def go_sleep
     if(@energy_level < 3)
       @energy_level = 3
       puts 'hhhhrrrrrptcchhhhhh'.yellow
     else
       puts 'feeeeeee. don`t wanna sleep'.pink
     end
+    check
+    lower_states
+    @mood = 'good'
   end
 
-  def get_toilet
-    if need_toilet
+  def toilet
+    if @need_toilet
       puts 'I`ve done it'.yellow
     else
       puts 'feeeeeee. don`t need toilet'.pink
     end
+    @need_toilet = false
+    lower_states
+    check
+  end
+
+  def play
+    p 'you`r playing with your pet'
+    lower_states
+    check
+    @mood = 'happy'
   end
 
   def is_dead?
@@ -56,28 +73,35 @@ class Pet
   end
 
   def thirsty?
-    @feed_level == 1
-  end
-
-  def toilet?
-    @toilet 
+    @water_level == 1
   end
 
   def sleepy?
-    @energy_level ==1
+    @energy_level == 1
   end
 
-  def low_states
-    @hungry_level -= 1
+  def lower_states
+    @feed_level -= 1
     @water_level -= 1
     @energy_level -= 1
   end
 
-  def loose_life
-    @lifes -=1
+  def maybe_lose_life    
+    if @hungry_level == 0 || @water_level == 0 || @energy_level == 0
+      @lifes -=1 
+      puts "i just loose one of my lifes(( now i have #{@lifes} lifes".red
+      @feed_level = 3
+      @water_level = 3
+      @energy_level = 3
+    end
   end
 
   def check
+    puts('I`m so  hungry!'.red) if hungry?
+    puts('I`m so thirsty!'.red) if thirsty?
+    puts('I need toilet!'.red) if @need_toilet
+    puts('I need to sleep!'.red) if sleepy?
+    maybe_lose_life  
   end
   
 end
