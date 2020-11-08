@@ -4,7 +4,7 @@ require_relative 'dog'
 require_relative 'cat'
 
 class Ui
-  COMMANDS = %w[feed play water toilet sleep status voice love exit].freeze
+  COMMANDS = %w[feed play water toilet sleep status voice love observe exit].freeze
   def start
     init_pet
     
@@ -32,6 +32,8 @@ class Ui
         @pet.voice
       when 'love'
         @pet.love
+      when 'observe'
+        @pet.random
       when 'exit'
         break
       else
@@ -50,7 +52,7 @@ class Ui
     elsif type == 'cat'
       @pet = Cat.new(name)
     else
-      @pet = Pet.new(name)
+      puts 'Don`t know this pet'
     end
     puts "Hi i'm your #{@pet.class}. My name is #{@pet.name}. And I love u :*".yellow
   end

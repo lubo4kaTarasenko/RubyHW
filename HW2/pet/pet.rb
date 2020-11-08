@@ -89,7 +89,7 @@ class Pet
   def maybe_lose_life    
     if @hungry_level == 0 || @water_level == 0 || @energy_level == 0
       @lifes -=1 
-      puts "i just loose one of my lifes(( now i have #{@lifes} lifes".red
+      puts "I have just lost one of my lifes(( now I have #{@lifes} lifes".red
       @feed_level = 3
       @water_level = 3
       @energy_level = 3
