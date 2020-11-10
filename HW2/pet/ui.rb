@@ -43,9 +43,9 @@ class Ui
   end
   
   def init_pet
-    puts 'name? '.yellow
+    puts 'Please, enter you`r pet`s name? '.yellow
     name = gets.chomp
-    puts 'Choose cat or dog'.yellow
+    puts 'Choose cat or dog, please'.yellow
     type = gets.chomp.downcase
     if type == 'dog'
       @pet = Dog.new(name)

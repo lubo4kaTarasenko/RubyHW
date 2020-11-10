@@ -35,5 +35,4 @@ class Dog < Pet
     lower_states
     check
   end
-
 end

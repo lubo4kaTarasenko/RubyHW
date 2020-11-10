@@ -17,9 +17,9 @@ p ' – отсортировать от большего к меньшему;'
 p array.sort.reverse
 p '  – удалить все нечетные числа;'
 array1 = array.dup
-p array1.delete_if{|el| el.odd?}
+p array1.delete_if { |el| el.odd? }
 p '  – оставить только те числа, которые без остатка делятся на 3;'
-p array.select{|el| el % 3  == 0}
+p array.select{ |el| el % 3  == 0}
 p '  – удалить из массива числа, которые повторяются (то есть, нужно вывести массив, в котором нет повторов);'
 p array.uniq
 p '  – разделить каждый элемент на 10, в результате элементы не должны быть округлены до целого;'
@@ -29,7 +29,7 @@ p array1
 p '  – получить новый массив, который бы содержал в себе те буквы английского алфавита, порядковый номер которых есть в нашем массиве;'
 arr_en = [''] + ('a'..'z').to_a
 arr_en1 = []
-arr_en.each_with_index{ |el, i| arr_en1 << el if array.include?(i) }
+arr_en.each.with_index{ |el, i| arr_en1 << el if array.include?(i) }
 p arr_en1
 p ' – поменять местами минимальный и максимальный элементы массива;'
 min_ind = array.index(array.min)

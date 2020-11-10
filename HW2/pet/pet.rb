@@ -1,5 +1,6 @@
 class Pet 
   attr_accessor :name
+
   def initialize(name)
     @name = name
     @feed_level = 3
@@ -11,7 +12,7 @@ class Pet
   end
 
   def feed
-    if(@feed_level < 3)
+    if @feed_level < 3
       @feed_level = 3
       puts 'omnomnom. thank u, dude'.yellow
       @mood = 'happy'
@@ -22,7 +23,7 @@ class Pet
   end
   
   def water
-    if(@water_level < 3)
+    if @water_level < 3
       @water_level = 3
       puts 'bul-bul-hlyup-hlyup. thank u, dude'.yellow
       @mood = 'happy'
@@ -33,7 +34,7 @@ class Pet
   end
 
   def go_sleep
-    if(@energy_level < 3)
+    if @energy_level < 3
       @energy_level = 3
       puts 'hhhhrrrrrptcchhhhhh'.yellow
     else
@@ -87,7 +88,7 @@ class Pet
   end
 
   def maybe_lose_life    
-    if @hungry_level == 0 || @water_level == 0 || @energy_level == 0
+    if [@feed_level, @water_level, @energy_level].any?(&:zero?)
       @lifes -=1 
       puts "I have just lost one of my lifes(( now I have #{@lifes} lifes".red
       @feed_level = 3
@@ -102,6 +103,5 @@ class Pet
     puts('I need toilet!'.red) if @need_toilet
     puts('I need to sleep!'.red) if sleepy?
     maybe_lose_life  
-  end
-  
+  end  
 end

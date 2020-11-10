@@ -39,5 +39,4 @@ class Cat < Pet
     lower_states
     check
   end
-
 end
